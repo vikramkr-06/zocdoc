@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, Stethoscope } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast"
 
 const DoctorLogin = () => {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -15,16 +16,16 @@ const DoctorLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle login logic here
     toast({
       title: "Doctor Login Attempt",
       description: "Login functionality would be implemented here.",
     })
+    navigate("/doctor")
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-50 to-teal-100 p-4">
-      <Card className="w-full max-w-md shadow-xl border-teal-200">
+      <Card className="w-full max-w-sm shadow-xl border-teal-200">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <div className="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
@@ -54,7 +55,7 @@ const DoctorLogin = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
-                  <Link to="/doctor/forgot-password" className="text-sm text-teal-600 hover:underline">
+                  <Link to="/doctor/forgot/password" className="text-sm text-teal-600 hover:underline">
                     Forgot password?
                   </Link>
                 </div>
@@ -72,7 +73,7 @@ const DoctorLogin = () => {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute right-0 top-0 h-full px-3 py-2 cursor-pointer hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -84,7 +85,7 @@ const DoctorLogin = () => {
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700">
+              <Button type="submit" className="w-full cursor-pointer bg-teal-600 hover:bg-teal-700">
                 Sign In
               </Button>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast"
 
 const DoctorVerifyOTP = () => {
+  const navigate = useNavigate()
   const [otp, setOtp] = useState(["", "", "", ""])
   const { toast } = useToast()
 
@@ -19,8 +20,6 @@ const DoctorVerifyOTP = () => {
     const newOtp = [...otp]
     newOtp[index] = value
     setOtp(newOtp)
-
-    // Auto-focus next input
     if (value && index < 3) {
       const nextInput = document.getElementById(`doctor-otp-${index + 1}`)
       if (nextInput) {
@@ -32,19 +31,16 @@ const DoctorVerifyOTP = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const otpValue = otp.join("")
-    // Handle OTP verification logic here
     toast({
       title: "OTP Verification",
       description: "Verification functionality would be implemented here.",
     })
-
-    // Redirect to update password page
-    window.location.href = "/doctor/update-password"
+    navigate("/doctor/update/password")
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-50 to-teal-100 p-4">
-      <Card className="w-full max-w-md shadow-xl border-teal-200">
+      <Card className="w-full max-w-sm shadow-xl border-teal-200">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <div className="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
@@ -57,7 +53,7 @@ const DoctorVerifyOTP = () => {
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="space-y-4">
-              <div className="space-y-2">
+              <div className="space-y-2 flex flex-col items-center px-8">
                 <Label htmlFor="doctor-otp-0">One-Time Password</Label>
                 <div className="flex justify-between gap-2">
                   {otp.map((digit, index) => (
@@ -76,7 +72,7 @@ const DoctorVerifyOTP = () => {
                   ))}
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700">
+              <Button type="submit" className="w-full cursor-pointer bg-teal-600 hover:bg-teal-700">
                 Verify OTP
               </Button>
             </div>
@@ -85,7 +81,7 @@ const DoctorVerifyOTP = () => {
         <CardFooter className="flex flex-col space-y-4">
           <div className="text-sm text-center text-muted-foreground">
             Didn't receive the code?{" "}
-            <Link to="/doctor/forgot-password" className="text-teal-600 hover:underline">
+            <Link to="/doctor/forgot/password" className="text-teal-600 hover:underline">
               Resend OTP
             </Link>
           </div>

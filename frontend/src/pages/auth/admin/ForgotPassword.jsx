@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { KeyRound } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,8 +9,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast"
 
 const AdminForgotPassword = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const { toast } = useToast()
 
   const handleSubmit = (e) => {
@@ -19,12 +19,12 @@ const AdminForgotPassword = () => {
       title: "Reset Email Sent",
       description: "If your email exists in our system, you'll receive a reset link.",
     })
-    setIsSubmitted(true)
+    navigate("/verify/otp")
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-50 to-purple-100 p-4">
-      <Card className="w-full max-w-md shadow-xl border-purple-200">
+      <Card className="w-full max-w-sm shadow-xl border-purple-200">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
@@ -37,39 +37,25 @@ const AdminForgotPassword = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {!isSubmitted ? (
-            <form onSubmit={handleSubmit}>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Admin Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="admin@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="border-purple-200 focus-visible:ring-purple-500"
-                  />
-                </div>
-                <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
-                  Send Reset OTP
-                </Button>
-              </div>
-            </form>
-          ) : (
+          <form onSubmit={handleSubmit}>
             <div className="space-y-4">
-              <div className="rounded-md bg-purple-50 p-4 text-sm text-purple-600">
-                We've sent an OTP to your email address. Please check your inbox and enter the code on the next screen.
+              <div className="space-y-2">
+                <Label htmlFor="email">Admin Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="admin@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="border-purple-200 focus-visible:ring-purple-500"
+                />
               </div>
-              <Button
-                className="w-full bg-purple-600 hover:bg-purple-700"
-                onClick={() => (window.location.href = "/admin/verify-otp")}
-              >
-                Enter OTP
+              <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+                Send Reset OTP
               </Button>
             </div>
-          )}
+          </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <div className="text-sm text-center text-muted-foreground">

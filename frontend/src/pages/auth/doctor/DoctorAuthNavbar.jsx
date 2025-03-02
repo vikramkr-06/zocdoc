@@ -10,7 +10,6 @@ const DoctorNavbar = () => {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo and brand */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <div className="h-8 w-8 rounded-full bg-teal-600 flex items-center justify-center mr-2">
@@ -20,8 +19,6 @@ const DoctorNavbar = () => {
               <span className="ml-2 text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full">Doctors</span>
             </Link>
           </div>
-
-          {/* Desktop navigation */}
           <nav className="hidden md:flex space-x-8">
             <Link to="/" className="text-gray-700 hover:text-teal-600 px-3 py-2 text-sm font-medium">
               Home
@@ -36,8 +33,6 @@ const DoctorNavbar = () => {
               Contact
             </Link>
           </nav>
-
-          {/* Auth buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/doctor/login">
               <Button variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50">
@@ -48,8 +43,6 @@ const DoctorNavbar = () => {
               <Button className="bg-teal-600 hover:bg-teal-700">Join Now</Button>
             </Link>
           </div>
-
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               type="button"
@@ -66,8 +59,6 @@ const DoctorNavbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

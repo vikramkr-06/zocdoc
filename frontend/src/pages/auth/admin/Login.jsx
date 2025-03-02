@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, ShieldAlert } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast"
 
 const AdminLogin = () => {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -20,11 +21,12 @@ const AdminLogin = () => {
       title: "Admin Login Attempt",
       description: "Login functionality would be implemented here.",
     })
+    navigate("/admin")
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-50 to-purple-100 p-4">
-      <Card className="w-full max-w-md shadow-xl border-purple-200">
+      <Card className="w-full max-w-sm shadow-xl border-purple-200">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
@@ -54,7 +56,7 @@ const AdminLogin = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
-                  <Link to="/admin/forgot-password" className="text-sm text-purple-600 hover:underline">
+                  <Link to="/admin/forgot/password" className="text-sm text-purple-600 hover:underline">
                     Forgot password?
                   </Link>
                 </div>
@@ -72,7 +74,7 @@ const AdminLogin = () => {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute cursor-pointer right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -84,7 +86,7 @@ const AdminLogin = () => {
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+              <Button type="submit" className="w-full cursor-pointer bg-purple-600 hover:bg-purple-700">
                 Sign In
               </Button>
             </div>

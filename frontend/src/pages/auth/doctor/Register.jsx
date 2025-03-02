@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { Eye, EyeOff, Stethoscope, Upload } from "lucide-react"
+import { Link, useNavigate } from "react-router-dom"
+import { Eye, EyeOff, Stethoscope } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -8,27 +8,25 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast"
 
 const DoctorRegister = () => {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [phone, setPhone] = useState("")
-  const [specialization, setSpecialization] = useState("")
-  const [experience, setExperience] = useState("")
   const { toast } = useToast()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle registration logic here
     toast({
       title: "Doctor Registration Attempt",
       description: "Registration functionality would be implemented here.",
     })
+    navigate("/doctor")
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-50 to-teal-100 p-4">
-      <Card className="w-full max-w-md shadow-xl border-teal-200">
+      <Card className="w-full max-w-sm shadow-xl border-teal-200">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <div className="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
@@ -45,7 +43,7 @@ const DoctorRegister = () => {
                 <Label htmlFor="name">Full Name</Label>
                 <Input
                   id="name"
-                  placeholder="Dr. John Doe"
+                  placeholder="Dr. Vikram"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -57,57 +55,12 @@ const DoctorRegister = () => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="doctor@example.com"
+                  placeholder="dr.vikram@gamil.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="border-teal-200 focus-visible:ring-teal-500"
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="+1 (555) 000-0000"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                  className="border-teal-200 focus-visible:ring-teal-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="specialization">Specialization</Label>
-                <Input
-                  id="specialization"
-                  placeholder="Cardiology, Neurology, etc."
-                  value={specialization}
-                  onChange={(e) => setSpecialization(e.target.value)}
-                  required
-                  className="border-teal-200 focus-visible:ring-teal-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="experience">Years of Experience</Label>
-                <Input
-                  id="experience"
-                  type="number"
-                  placeholder="5"
-                  value={experience}
-                  onChange={(e) => setExperience(e.target.value)}
-                  required
-                  className="border-teal-200 focus-visible:ring-teal-500"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="documents">Upload Credentials</Label>
-                <div className="border-2 border-dashed border-teal-200 rounded-md p-4 text-center cursor-pointer hover:bg-teal-50">
-                  <Upload className="h-6 w-6 mx-auto text-teal-600 mb-2" />
-                  <p className="text-sm text-muted-foreground">
-                    Click to upload or drag and drop your medical license and certificates
-                  </p>
-                  <Input id="documents" type="file" className="hidden" multiple />
-                </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
@@ -125,7 +78,7 @@ const DoctorRegister = () => {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute cursor-pointer right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -137,7 +90,7 @@ const DoctorRegister = () => {
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700">
+              <Button type="submit" className="w-full cursor-pointer bg-teal-600 hover:bg-teal-700">
                 Create Doctor Account
               </Button>
             </div>

@@ -9,7 +9,7 @@ import { Progress } from "@/components/ui/progress"
 
 const DoctorProfile = () => {
   const [doctor, setDoctor] = useState({
-    name: "Dr. Vikram Mehta",
+    name: "Dr. Vikram Kumar",
     specialty: "Cardiologist",
     qualification: "MBBS, MD (Cardiology)",
     experience: 12,
@@ -19,7 +19,7 @@ const DoctorProfile = () => {
     reviews: 124,
     patients: 1500,
     about:
-      "Dr. Vikram Mehta is a highly skilled cardiologist with over 12 years of experience in treating various heart conditions. He specializes in interventional cardiology and has performed over 1000 successful procedures.",
+      "Dr. Vikram Kumar is a highly skilled cardiologist with over 12 years of experience in treating various heart conditions. He specializes in interventional cardiology and has performed over 1000 successful procedures.",
     education: [
       { degree: "MBBS", institution: "All India Institute of Medical Sciences, Delhi", year: "2005-2011" },
       {
@@ -54,7 +54,7 @@ const DoctorProfile = () => {
     appointments: [
       { id: 1, patient: "Amit Kumar", date: "2023-10-15", time: "10:00 AM", status: "completed" },
       { id: 2, patient: "Priya Singh", date: "2023-11-05", time: "3:30 PM", status: "upcoming" },
-      { id: 3, patient: "Rahul Sharma", date: "2023-11-05", time: "4:00 PM", status: "upcoming" },
+      { id: 3, patient: "Vikram Kumar", date: "2023-11-05", time: "4:00 PM", status: "upcoming" },
       { id: 4, patient: "Neha Gupta", date: "2023-11-06", time: "11:15 AM", status: "upcoming" },
     ],
   })
@@ -74,13 +74,11 @@ const DoctorProfile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-slate-950 dark:to-slate-900">
-      <div className="container mx-auto px-4 py-8">
-        {/* Profile Header */}
+      <div className="container mx-auto p-4">
         <Card className="mb-8 overflow-hidden border-none shadow-lg">
-          <div className="h-32 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
           <CardContent className="relative pt-0">
-            <div className="flex flex-col md:flex-row gap-6 -mt-12">
-              <Avatar className="h-24 w-24 md:h-32 md:w-32 border-4 border-background shadow-md">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+              <Avatar className="cursor-pointer h-24 w-24 md:h-32 md:w-32 border-4 border-background shadow-md">
                 <AvatarImage src={doctor.avatar} alt={doctor.name} />
                 <AvatarFallback className="text-2xl">
                   {doctor.name
@@ -89,7 +87,6 @@ const DoctorProfile = () => {
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-
               <div className="flex-1 space-y-2 pt-4 md:pt-0">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
@@ -99,25 +96,25 @@ const DoctorProfile = () => {
                     </div>
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
                       <span>{doctor.specialty}</span>
-                      <span>•</span>
+                      <span className="hidden md:inline">•</span>
                       <span>{doctor.qualification}</span>
-                      <span>•</span>
+                      <span className="hidden md:inline">•</span>
                       <span>{doctor.experience} years exp.</span>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button variant="outline" className="gap-1">
+                    <Button variant="outline" className="gap-1 cursor-pointer">
                       <MessageSquare className="h-4 w-4" />
-                      <span className="hidden sm:inline">Message</span>
+                      <span className="text-xs md:text-sm">Message</span>
                     </Button>
-                    <Button className="gap-1">
+                    <Button className="gap-1 cursor-pointer">
                       <Calendar className="h-4 w-4" />
-                      <span className="hidden sm:inline">Book Appointment</span>
+                      <span className="text-xs md:text-sm">Book Appointment</span>
                     </Button>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+                <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 pt-2">
                   <div className="flex items-center gap-1">
                     <Star className="h-4 w-4 text-amber-500" />
                     <span className="font-medium">{doctor.rating}</span>
@@ -134,9 +131,7 @@ const DoctorProfile = () => {
         </Card>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-          {/* Sidebar */}
           <div className="space-y-6">
-            {/* About */}
             <Card className="shadow-md">
               <CardHeader>
                 <CardTitle>About</CardTitle>
@@ -145,8 +140,6 @@ const DoctorProfile = () => {
                 <p className="text-sm text-muted-foreground">{doctor.about}</p>
               </CardContent>
             </Card>
-
-            {/* Clinic Information */}
             <Card className="shadow-md">
               <CardHeader>
                 <CardTitle>Clinic Information</CardTitle>
@@ -167,8 +160,6 @@ const DoctorProfile = () => {
                 ))}
               </CardContent>
             </Card>
-
-            {/* KYC Status */}
             <Card className="shadow-md">
               <CardHeader>
                 <CardTitle>KYC Status</CardTitle>
@@ -182,7 +173,6 @@ const DoctorProfile = () => {
                   </div>
                   <Progress value={75} className="h-2" />
                 </div>
-
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-sm">Identity Proof</span>
@@ -212,25 +202,20 @@ const DoctorProfile = () => {
                     </span>
                   </div>
                 </div>
-
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full cursor-pointer">
                   Upload Pending Documents
                 </Button>
               </CardContent>
             </Card>
           </div>
-
-          {/* Main Content */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="appointments" className="space-y-6">
               <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="appointments">Appointments</TabsTrigger>
-                <TabsTrigger value="education">Education</TabsTrigger>
-                <TabsTrigger value="registrations">Registrations</TabsTrigger>
-                <TabsTrigger value="settings">Settings</TabsTrigger>
+                <TabsTrigger value="appointments" className="cursor-pointer">Appointments</TabsTrigger>
+                <TabsTrigger value="education" className="cursor-pointer">Education</TabsTrigger>
+                <TabsTrigger value="registrations" className="cursor-pointer">Registrations</TabsTrigger>
+                <TabsTrigger value="settings" className="cursor-pointer">Settings</TabsTrigger>
               </TabsList>
-
-              {/* Appointments Tab */}
               <TabsContent value="appointments" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -258,10 +243,10 @@ const DoctorProfile = () => {
                               </p>
                             </div>
                             <div className="flex gap-2 w-full sm:w-auto">
-                              <Button size="sm" variant="outline" className="flex-1 sm:flex-initial">
+                              <Button size="sm" variant="outline" className="flex-1 sm:flex-initial cursor-pointer">
                                 Reschedule
                               </Button>
-                              <Button size="sm" className="flex-1 sm:flex-initial">
+                              <Button size="sm" className="flex-1 sm:flex-initial cursor-pointer">
                                 Start Consultation
                               </Button>
                             </div>
@@ -270,14 +255,13 @@ const DoctorProfile = () => {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between">
                     <div>
                       <CardTitle>Past Appointments</CardTitle>
                       <CardDescription>Review your previous appointments</CardDescription>
                     </div>
-                    <Button variant="ghost" size="sm" className="gap-1">
+                    <Button variant="ghost" size="sm" className="gap-1 cursor-pointer">
                       View All <ChevronRight className="h-4 w-4" />
                     </Button>
                   </CardHeader>
@@ -302,10 +286,10 @@ const DoctorProfile = () => {
                               </p>
                             </div>
                             <div className="flex gap-2">
-                              <Button size="sm" variant="outline">
+                              <Button size="sm" variant="outline" className="cursor-pointer">
                                 View Notes
                               </Button>
-                              <Button size="sm" variant="secondary">
+                              <Button size="sm" variant="secondary" className="cursor-pointer">
                                 Follow Up
                               </Button>
                             </div>
@@ -315,8 +299,6 @@ const DoctorProfile = () => {
                   </CardContent>
                 </Card>
               </TabsContent>
-
-              {/* Education Tab */}
               <TabsContent value="education" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -340,7 +322,7 @@ const DoctorProfile = () => {
                       ))}
                     </div>
                     <div className="mt-6">
-                      <Button variant="outline" className="gap-1">
+                      <Button variant="outline" className="gap-1 cursor-pointer">
                         <FileText className="h-4 w-4" />
                         Add Qualification
                       </Button>
@@ -348,8 +330,6 @@ const DoctorProfile = () => {
                   </CardContent>
                 </Card>
               </TabsContent>
-
-              {/* Registrations Tab */}
               <TabsContent value="registrations" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -377,7 +357,7 @@ const DoctorProfile = () => {
                       ))}
                     </div>
                     <div className="mt-4">
-                      <Button variant="outline" className="gap-1">
+                      <Button variant="outline" className="gap-1 cursor-pointer">
                         <FileText className="h-4 w-4" />
                         Add Registration
                       </Button>
@@ -385,8 +365,6 @@ const DoctorProfile = () => {
                   </CardContent>
                 </Card>
               </TabsContent>
-
-              {/* Settings Tab */}
               <TabsContent value="settings" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -429,7 +407,6 @@ const DoctorProfile = () => {
                           />
                         </div>
                       </div>
-
                       <div className="space-y-2">
                         <label className="text-sm font-medium">About</label>
                         <textarea
@@ -438,12 +415,10 @@ const DoctorProfile = () => {
                           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                       </div>
-
-                      <Button className="w-full sm:w-auto">Save Changes</Button>
+                      <Button className="w-full sm:w-auto cursor-pointer">Save Changes</Button>
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader>
                     <CardTitle>Consultation Fees</CardTitle>
@@ -492,7 +467,7 @@ const DoctorProfile = () => {
                           </div>
                         </div>
                       </div>
-                      <Button className="w-full sm:w-auto">Update Fees</Button>
+                      <Button className="w-full sm:w-auto cursor-pointer">Update Fees</Button>
                     </div>
                   </CardContent>
                 </Card>

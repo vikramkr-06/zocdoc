@@ -1,74 +1,82 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import wrong from '../assets/wrong.png'
-import googleBanner from '../assets/google-banner.png'
-import appleBanner from '../assets/apple-banner.png'
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { IoLogoApple } from "react-icons/io5";
+import { IoLogoGooglePlaystore } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <div className='bg-[#333333] max-w-screen flex flex-col'>
-      <div className="px-16">
-        <div className="flex justify-between text-white py-10">
-          <div className="flex flex-col space-y-2">
-            <h1 className="text-lg font-medium mb-5">Zocdoc</h1>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Home</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>About us</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Press</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Careers</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Contact us</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Help</Link>
-          </div>
-          <div className="flex flex-col space-y-2">
-            <h1 className="text-lg font-medium mb-5">Discover</h1>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>The Paper Gown: Stories for and about patients</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Practice Resources for providers</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Community Standards</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Data and privacy</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Verified reviews</Link>
-          </div>
-          <div className="">
-            <h1 className="text-lg font-medium underline">Insurance Carriers</h1>
-          </div>
-          <div className="">
-            <h1 className="text-lg font-medium underline">Top Specialties</h1>
-          </div>
-          <div className="flex flex-col space-y-2">
-            <h1 className="text-lg font-medium mb-5">Are you a top doctor or health service?</h1>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>List your practice on Zocdoc</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Learn about Zocdoc for Health Systems</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Become an EHR partner</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Access Zocdoc for Developers</Link>
-            <Link to='#' className='text-gray-300 font-semibold hover:text-white transition-colors'>Learn about Zocdoc Enterprise Solutions</Link>
-            <div className="mt-5">
-              <h1 className="text-lg font-medium mb-2">Get the Zocdoc app</h1>
-              <img src={appleBanner} alt="google" className='h-10 cursor-pointer' />
-              <img src={googleBanner} alt="Google" className='h-10 cursor-pointer' />
+    <footer className="bg-gray-900 text-white">
+      <div className="container mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <h1 className="text-xl font-semibold mb-4">Zocdoc</h1>
+          <ul className="space-y-2">
+            <FooterLink to="/" text="Home" />
+            <FooterLink to="/about" text="About Us" />
+            <FooterLink to="/careers" text="Careers" />
+            <FooterLink to="/contact" text="Contact Us" />
+            <FooterLink to="/help" text="Help Center" />
+          </ul>
+        </div>
+        <div>
+          <h1 className="text-xl font-semibold mb-4">Discover</h1>
+          <ul className="space-y-2">
+            <FooterLink to="#" text="Stories for Patients" />
+            <FooterLink to="#" text="Provider Resources" />
+            <FooterLink to="#" text="Community Standards" />
+            <FooterLink to="#" text="Privacy & Data" />
+            <FooterLink to="#" text="Verified Reviews" />
+          </ul>
+        </div>
+        <div>
+          <h1 className="text-xl font-semibold mb-4">For Doctors</h1>
+          <ul className="space-y-2">
+            <FooterLink to="#" text="List Your Practice" />
+            <FooterLink to="#" text="Zocdoc for Health Systems" />
+            <FooterLink to="#" text="Become an EHR Partner" />
+            <FooterLink to="#" text="Zocdoc for Developers" />
+          </ul>
+        </div>
+        <div>
+          <h1 className="text-xl font-semibold mb-4">Get the Zocdoc App</h1>
+          <div className="space-y-3">
+            <div className="w-40 py-2 px-2 cursor-pointer bg-black rounded-lg flex items-center gap-3 hover:bg-gray-800 transition duration-300">
+              <IoLogoApple size={28} className="text-white" />
+              <div className="text-left">
+                <p className="text-xs text-gray-300">Download on the</p>
+                <h1 className="font-medium text-white text-lg">App Store</h1>
+              </div>
+            </div>
+            <div className="w-40 py-2 px-2 cursor-pointer bg-black rounded-lg flex items-center gap-3 hover:bg-gray-800 transition duration-300">
+              <IoLogoGooglePlaystore size={26} className="text-white" />
+              <div className="text-left">
+                <p className="text-xs text-gray-300">Get it on</p>
+                <h1 className="font-medium text-white text-lg">Google Play</h1>
+              </div>
             </div>
           </div>
         </div>
-        <div className="text-[13.5px] py-7 text-gray-300">
-          <p>The content provided here and elsewhere on the Zocdoc site or mobile app is provided for general informational purposes only. It is not intended as, and Zocdoc does not provide, medical advice, diagnosis or treatment. Always contact your healthcare provider directly with any questions you may have regarding your health or specific medical advice.</p>
+      </div>
+      <div className="bg-gray-800 py-4 px-6 text-sm text-gray-400 text-center">
+        The content on Zocdoc is for informational purposes only and does not constitute medical advice, diagnosis, or treatment.
+      </div>
+      <div className="bg-black py-5 px-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <p>&copy; {new Date().getFullYear()} ZocDoc Inc. All rights reserved.</p>
+        <div className="flex space-x-4 mt-3 md:mt-0">
+          <FooterLink to="#" text="Privacy Policy" />
+          <FooterLink to="#" text="Terms of Service" />
+          <FooterLink to="#" text="Cookie Policy" />
         </div>
       </div>
-      <div className="bg-zinc-950 text-white flex items-center justify-between px-16 py-7">
-        <p className="text-gray-400 mb-4 md:mb-0">
-          &copy; {new Date().getFullYear()} ZocDoc Inc. All rights reserved.
-        </p>
-        <div className="flex space-x-6">
-          <Link href="#" className="text-gray-400 hover:text-white text-sm">
-            Privacy Policy
-          </Link>
-          <Link href="#" className="text-gray-400 hover:text-white text-sm">
-            Terms of Service
-          </Link>
-          <Link href="#" className="text-gray-400 hover:text-white text-sm">
-            Cookie Policy
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
-}
+    </footer>
+  );
+};
 
-export default Footer
+const FooterLink = ({ to, text }) => (
+  <li>
+    <Link to={to} className="text-gray-400 hover:text-white transition-colors duration-300">
+      {text}
+    </Link>
+  </li>
+);
+
+export default Footer;

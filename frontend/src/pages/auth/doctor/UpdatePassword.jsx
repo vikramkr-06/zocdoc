@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/components/ui/use-toast"
 
 const DoctorUpdatePassword = () => {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [password, setPassword] = useState("")
@@ -25,22 +26,16 @@ const DoctorUpdatePassword = () => {
       })
       return
     }
-
-    // Handle password update logic here
     toast({
       title: "Password Updated",
       description: "Your password has been successfully updated.",
     })
-
-    // Redirect to login page
-    setTimeout(() => {
-      window.location.href = "/doctor/login"
-    }, 2000)
+    navigate("/doctor")
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-50 to-teal-100 p-4">
-      <Card className="w-full max-w-md shadow-xl border-teal-200">
+      <Card className="w-full max-w-sm shadow-xl border-teal-200">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-2">
             <div className="h-12 w-12 rounded-full bg-teal-100 flex items-center justify-center">
@@ -69,7 +64,7 @@ const DoctorUpdatePassword = () => {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute right-0 top-0 h-full cursor-pointer px-3 py-2 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -97,7 +92,7 @@ const DoctorUpdatePassword = () => {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute right-0 top-0 h-full px-3 py-2 cursor-pointer hover:bg-transparent"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     {showConfirmPassword ? (
@@ -109,7 +104,7 @@ const DoctorUpdatePassword = () => {
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700">
+              <Button type="submit" className="w-full cursor-pointer bg-teal-600 hover:bg-teal-700">
                 Update Password
               </Button>
             </div>

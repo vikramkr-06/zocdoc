@@ -23,8 +23,8 @@ import DoctorNavbar from './components/DoctorNavbar'
 
 const App = () => {
   const location = useLocation();
-  const userNavbarRoutes = ["/login", "/register", "/forgot/password", "/verify/otp", "/update/password", "/"];
-  const doctorNavbarRoutes = ["/doctor/login", "/doctor/register", "/doctor/forgot/password", "/doctor/verify/otp", "/doctor/update/password", "/doctor"];
+  const userNavbarRoutes = ["/login", "/register", "/forgot/password", "/verify/otp", "/update/password", "/", "/user/profile"];
+  const doctorNavbarRoutes = ["/doctor/login", "/doctor/register", "/doctor/forgot/password", "/doctor/verify/otp", "/doctor/update/password", "/doctor", "/doctor/profile"];
   const adminNavbarRoutes = ["/admin/login", "/admin/forgot/password", "/admin"];
   return (
     <div>

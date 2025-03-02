@@ -1,17 +1,16 @@
 import React, { useState } from "react"
-import { Bell, Calendar, Edit, LogOut, Settings, User } from "lucide-react"
+import { Bell, Edit, LogOut, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import UserNavbar from "../components/UserNavbar"
 
 const UserProfile = () => {
   const [user, setUser] = useState({
-    name: "Rahul Sharma",
-    email: "rahul.sharma@example.com",
-    phone: "+91 98765 43210",
+    name: "Vikram Kumar",
+    email: "vikram@gmail.com",
+    phone: "+91 8789148605",
     avatar: "/placeholder.svg?height=100&width=100",
     appointments: [
       {
@@ -47,15 +46,13 @@ const UserProfile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
-      <UserNavbar />
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
-          {/* Sidebar */}
           <div className="md:col-span-1">
             <Card className="sticky top-8 shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader className="pb-4">
                 <div className="flex flex-col items-center space-y-4">
-                  <Avatar className="h-24 w-24 border-4 border-primary/10">
+                  <Avatar className="h-24 w-24 border-4 cursor-pointer border-primary/10">
                     <AvatarImage src={user.avatar} alt={user.name} />
                     <AvatarFallback className="text-2xl">
                       {user.name
@@ -69,7 +66,7 @@ const UserProfile = () => {
                     <p className="text-sm text-muted-foreground">{user.email}</p>
                     <p className="text-sm text-muted-foreground">{user.phone}</p>
                   </div>
-                  <Button className="w-full gap-2" variant="outline">
+                  <Button className="w-full gap-2 cursor-pointer" variant="outline">
                     <Edit className="h-4 w-4" />
                     Edit Profile
                   </Button>
@@ -77,25 +74,17 @@ const UserProfile = () => {
               </CardHeader>
               <CardContent>
                 <nav className="space-y-2">
-                  <Button variant="ghost" className="w-full justify-start gap-2">
+                  <Button variant="ghost" className="w-full cursor-pointer justify-start gap-2">
                     <User className="h-4 w-4" />
                     Personal Information
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start gap-2">
-                    <Calendar className="h-4 w-4" />
-                    Appointments
-                  </Button>
-                  <Button variant="ghost" className="w-full justify-start gap-2">
+                  <Button variant="ghost" className="w-full cursor-pointer justify-start gap-2">
                     <Bell className="h-4 w-4" />
                     Notifications
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start gap-2">
-                    <Settings className="h-4 w-4" />
-                    Settings
-                  </Button>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start gap-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50"
+                    className="w-full justify-start cursor-pointer gap-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/50"
                   >
                     <LogOut className="h-4 w-4" />
                     Logout
@@ -104,17 +93,13 @@ const UserProfile = () => {
               </CardContent>
             </Card>
           </div>
-
-          {/* Main Content */}
           <div className="md:col-span-2">
             <Tabs defaultValue="appointments" className="space-y-6">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="appointments">Appointments</TabsTrigger>
-                <TabsTrigger value="medical-history">Medical History</TabsTrigger>
-                <TabsTrigger value="settings">Settings</TabsTrigger>
+                <TabsTrigger value="appointments" className="cursor-pointer">Appointments</TabsTrigger>
+                <TabsTrigger value="medical-history" className="cursor-pointer">Medical History</TabsTrigger>
+                <TabsTrigger value="settings" className="cursor-pointer">Settings</TabsTrigger>
               </TabsList>
-
-              {/* Appointments Tab */}
               <TabsContent value="appointments" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -147,10 +132,10 @@ const UserProfile = () => {
                               </p>
                             </div>
                             <div className="flex gap-2 w-full sm:w-auto">
-                              <Button size="sm" variant="outline" className="flex-1 sm:flex-initial">
+                              <Button size="sm" variant="outline" className="flex-1 cursor-pointer sm:flex-initial">
                                 Reschedule
                               </Button>
-                              <Button size="sm" variant="destructive" className="flex-1 sm:flex-initial">
+                              <Button size="sm" variant="destructive" className="flex-1 cursor-pointer sm:flex-initial">
                                 Cancel
                               </Button>
                             </div>
@@ -159,7 +144,6 @@ const UserProfile = () => {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader>
                     <CardTitle>Past Appointments</CardTitle>
@@ -190,7 +174,7 @@ const UserProfile = () => {
                                 at {appointment.time}
                               </p>
                             </div>
-                            <Button size="sm" variant="secondary">
+                            <Button size="sm" variant="secondary" className="cursor-pointer">
                               View Details
                             </Button>
                           </div>
@@ -199,8 +183,6 @@ const UserProfile = () => {
                   </CardContent>
                 </Card>
               </TabsContent>
-
-              {/* Medical History Tab */}
               <TabsContent value="medical-history" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -216,7 +198,7 @@ const UserProfile = () => {
                               <h4 className="font-medium">{item.condition}</h4>
                               <p className="text-sm text-muted-foreground">Diagnosed in {item.diagnosedYear}</p>
                             </div>
-                            <Button size="sm" variant="ghost">
+                            <Button size="sm" variant="ghost" className="cursor-pointer">
                               <Edit className="h-4 w-4" />
                             </Button>
                           </div>
@@ -244,12 +226,10 @@ const UserProfile = () => {
                     <CardDescription>Update your medical history</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button className="w-full">Add New Condition</Button>
+                    <Button className="w-full cursor-pointer">Add New Condition</Button>
                   </CardContent>
                 </Card>
               </TabsContent>
-
-              {/* Settings Tab */}
               <TabsContent value="settings" className="space-y-6">
                 <Card>
                   <CardHeader>
@@ -291,7 +271,7 @@ const UserProfile = () => {
                           />
                         </div>
                       </div>
-                      <Button className="w-full sm:w-auto">Save Changes</Button>
+                      <Button className="w-full sm:w-auto cursor-pointer">Save Changes</Button>
                     </div>
                   </CardContent>
                 </Card>
