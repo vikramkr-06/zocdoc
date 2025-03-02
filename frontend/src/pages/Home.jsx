@@ -1,52 +1,14 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
-import { IoCloseOutline } from "react-icons/io5";
-import { IoMenu } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { LuMapPin } from "react-icons/lu";
 import { IoSearch } from "react-icons/io5";
 import doctorImage from "../assets/doctor.jpg"
 import Footer from "../components/Footer";
-import DocNavbar from "../components/DocNavbar";
-import logo from '../assets/logo.svg'
 
 const Home = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   return (
     <div className="min-h-screen min-w-screen flex flex-col">
-      <header className="bg-[#FDFAEE]">
-        <div className="hidden md:block">
-          <DocNavbar />
-        </div>
-        <button className="md:hidden w-full text-gray-600 py-3 px-5" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {
-            isMenuOpen ?
-              <div className="flex text-center justify-between pr-3">
-                <img src={logo} alt="logo" className="w-24" />
-                <IoCloseOutline size={24} />
-              </div> :
-              <div className="w-full flex items-center gap-3">
-                <IoMenu size={24} />
-                <img src={logo} alt="logo" className="w-24" />
-              </div>
-          }
-        </button>
-        {isMenuOpen && (
-          <div className="md:hidden bg-[#FDFAEE] border-b border-gray-200 px-4 py-4">
-            <nav className="flex flex-col space-y-4">
-              <h1 className="font-medium text-lg ml-10 text-gray-600">Welcome to Zocdoc</h1>
-              <button className="w-full bg-[#FFF04B] py-2 text-lg font-medium rounded-lg text-gray-600">Sign up</button>
-              <button className="py-2 border-2 border-gray-300 rounded-lg text-lg font-medium">Login</button>
-              <p className="text-center font-medium text-base text-gray-700">
-                <span>Interested in </span>
-                <Link to='#' className="underline text-gray-900">listing.your practice?</Link>
-              </p>
-            </nav>
-          </div>
-        )}
-      </header>
       <main className="flex-grow px-5 md:px-16">
         <section className=" py-12 md:py-20">
           <div className="container mx-auto px-4">
