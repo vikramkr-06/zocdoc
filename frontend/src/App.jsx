@@ -18,12 +18,13 @@ import DoctorUpdatePassword from './pages/auth/doctor/UpdatePassword'
 import AdminLogin from './pages/auth/admin/Login'
 import AdminForgotPassword from './pages/auth/admin/ForgotPassword'
 import UserNavbar from './components/UserNavbar'
-import AdminNavbar from './components/AdminNavbar'
 import DoctorNavbar from './components/DoctorNavbar'
 import DoctorPage from './pages/user/DoctorPage'
 import DoctorProfile from './pages/user/DoctorProfile'
 import BookAppointment from './pages/user/DoctorBook'
 import Footer from './components/Footer'
+import DoctorHomePage from './pages/Doctor/DoctorHomePage'
+import AdminHomePage from './pages/admin/AdminHomePage'
 
 const App = () => {
   const location = useLocation();
@@ -48,24 +49,19 @@ const App = () => {
     "/doctor",
     "/doctor/profile"
   ];
-  const adminNavbarRoutes = [
-    "/admin/login",
-    "/admin/forgot/password",
-    "/admin"
-  ];
   const userFooterRoutes = [
     "/",
     "/user/profile",
     "/user/doctor/page",
     "/user/doctor/page/:id",
-    "/user/doctor/page/:id/book"
+    "/user/doctor/page/:id/book",
+    "/doctor"
   ];
 
   return (
     <div>
       {userNavbarRoutes.includes(location.pathname) && <UserNavbar />}
       {doctorNavbarRoutes.includes(location.pathname) && <DoctorNavbar />}
-      {adminNavbarRoutes.includes(location.pathname) && <AdminNavbar />}
 
       <Routes>
         <Route path="/login" element={<UserLogin />} />
@@ -85,12 +81,12 @@ const App = () => {
         <Route path="/doctor/forgot/password" element={<DoctorForgotPassword />} />
         <Route path="/doctor/verify/otp" element={<DoctorVerifyOTP />} />
         <Route path="/doctor/update/password" element={<DoctorUpdatePassword />} />
-        <Route path='/doctor' element={<Home />} />
+        <Route path='/doctor' element={<DoctorHomePage />} />
         <Route path='/doctor/profile' element={<DoctorOwnProfile />} />
 
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/forgot/password" element={<AdminForgotPassword />} />
-        <Route path='/admin' element={<Home />} />
+        <Route path='/admin' element={<AdminHomePage />} />
       </Routes>
 
       {userFooterRoutes.includes(location.pathname) && <Footer />}

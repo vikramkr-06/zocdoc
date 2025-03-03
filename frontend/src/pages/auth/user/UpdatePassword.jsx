@@ -29,9 +29,7 @@ const UserUpdatePassword = () => {
       title: "Password Updated",
       description: "Your password has been successfully updated.",
     })
-    setTimeout(() => {
-      navigate("/")
-    }, 2000)
+    navigate("/")
   }
 
   return (
