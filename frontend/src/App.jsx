@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
-import DoctorProfile from './pages/DoctorProfile'
+import DoctorOwnProfile from './pages/DoctorProfile'
 import UserProfile from './pages/UserProfile'
 
 import { Toaster } from "@/components/ui/toaster"
@@ -20,15 +20,53 @@ import AdminForgotPassword from './pages/auth/admin/ForgotPassword'
 import UserNavbar from './components/UserNavbar'
 import AdminNavbar from './components/AdminNavbar'
 import DoctorNavbar from './components/DoctorNavbar'
+import DoctorPage from './pages/user/DoctorPage'
+import DoctorProfile from './pages/user/DoctorProfile'
+import BookAppointment from './pages/user/DoctorBook'
+import Footer from './components/Footer'
 
 const App = () => {
   const location = useLocation();
-  const userNavbarRoutes = ["/login", "/register", "/forgot/password", "/verify/otp", "/update/password", "/", "/user/profile"];
-  const doctorNavbarRoutes = ["/doctor/login", "/doctor/register", "/doctor/forgot/password", "/doctor/verify/otp", "/doctor/update/password", "/doctor", "/doctor/profile"];
-  const adminNavbarRoutes = ["/admin/login", "/admin/forgot/password", "/admin"];
+  const userNavbarRoutes = [
+    "/login", 
+    "/register",
+    "/forgot/password",
+    "/verify/otp",
+    "/update/password",
+    "/",
+    "/user/profile",
+    "/user/doctor/page",
+    "/user/doctor/page/:id",
+    "/user/doctor/page/:id/book"
+  ];
+  const doctorNavbarRoutes = [
+    "/doctor/login",
+    "/doctor/register",
+    "/doctor/forgot/password",
+    "/doctor/verify/otp",
+    "/doctor/update/password",
+    "/doctor",
+    "/doctor/profile"
+  ];
+  const adminNavbarRoutes = [
+    "/admin/login",
+    "/admin/forgot/password",
+    "/admin"
+  ];
+  const userFooterRoutes = [
+    "/",
+    "/user/profile",
+    "/user/doctor/page",
+    "/user/doctor/page/:id",
+    "/user/doctor/page/:id/book"
+  ];
+
   return (
     <div>
       {userNavbarRoutes.includes(location.pathname) && <UserNavbar />}
+      {doctorNavbarRoutes.includes(location.pathname) && <DoctorNavbar />}
+      {adminNavbarRoutes.includes(location.pathname) && <AdminNavbar />}
+
       <Routes>
         <Route path="/login" element={<UserLogin />} />
         <Route path="/register" element={<UserRegister />} />
@@ -37,26 +75,28 @@ const App = () => {
         <Route path="/update/password" element={<UserUpdatePassword />} />
         <Route path='/' element={<Home />} />
         <Route path='/user/profile' element={<UserProfile />} />
-      </Routes>
-      {doctorNavbarRoutes.includes(location.pathname) && <DoctorNavbar />}
-      <Routes>
+
+        <Route path='/user/doctor/page' element={<DoctorPage />} />
+        <Route path='/user/doctor/page/:id' element={<DoctorProfile />} />
+        <Route path='/user/doctor/page/:id/book' element={<BookAppointment />} />
+
         <Route path="/doctor/login" element={<DoctorLogin />} />
         <Route path="/doctor/register" element={<DoctorRegister />} />
         <Route path="/doctor/forgot/password" element={<DoctorForgotPassword />} />
         <Route path="/doctor/verify/otp" element={<DoctorVerifyOTP />} />
         <Route path="/doctor/update/password" element={<DoctorUpdatePassword />} />
         <Route path='/doctor' element={<Home />} />
-        <Route path='/doctor/profile' element={<DoctorProfile />} />
-      </Routes>
-      {adminNavbarRoutes.includes(location.pathname) && <AdminNavbar />}
-      <Routes>
+        <Route path='/doctor/profile' element={<DoctorOwnProfile />} />
+
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/forgot/password" element={<AdminForgotPassword />} />
         <Route path='/admin' element={<Home />} />
       </Routes>
+
+      {userFooterRoutes.includes(location.pathname) && <Footer />}
       <Toaster />
     </div>
   )
 }
 
-export default App
+export default App;

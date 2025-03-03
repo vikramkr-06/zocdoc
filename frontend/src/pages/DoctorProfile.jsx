@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 
-const DoctorProfile = () => {
+const DoctorOwnProfile = () => {
   const [doctor, setDoctor] = useState({
     name: "Dr. Vikram Kumar",
     specialty: "Cardiologist",
@@ -480,4 +480,4 @@ const DoctorProfile = () => {
   )
 }
 
-export default DoctorProfile
+export default DoctorOwnProfile

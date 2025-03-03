@@ -4,7 +4,7 @@ import { FaCalendarCheck } from "react-icons/fa";
 import { LuMapPin } from "react-icons/lu";
 import { IoSearch } from "react-icons/io5";
 import doctorImage from "../assets/doctor.jpg"
-import Footer from "../components/Footer";
+import insuranceImg from "../assets/insurance.avif"
 
 const Home = () => {
   return (
@@ -166,7 +166,9 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
               {[1, 2, 3, 4, 5, 6].map((item) => (
                 <div key={item} className="flex items-center justify-center p-4">
-                  <div className="w-full h-12 bg-gray-200 rounded flex items-center cursor-pointer justify-center">Vikram</div>
+                  <div className="w-full h-12 bg-gray-200 rounded flex items-center cursor-pointer justify-center">
+                    <img src={insuranceImg} alt="insurance" className="rounded-xl" />
+                  </div>
                 </div>
               ))}
             </div>
@@ -180,7 +182,6 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   )
 }

@@ -23,7 +23,7 @@ const UserNavbar = () => {
                   Appointments
                 </Link>
                 <Link
-                  to="/doctors"
+                  to="/user/doctor/page"
                   className="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500 transition"
                 >
                   Find Doctors
